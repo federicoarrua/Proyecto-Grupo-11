@@ -7,17 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default">
-	<div class="col-md-8 col-xs-8">
-		<%= link_to root_path do %>
-			<%= image_tag "Logo.png",title:"CouchInn",class:"img-responsive" %>
-		<% end %>
-	</div>
-	<div class="col-md-4 col-xs-4 text-center" style="text-align-center">
-		<%= link_to "Iniciar Sesión", "/users/sign_in" , class:'btn btn-default' %>
-		<%= link_to "Registrarse","/users/sign_up", class:'btn btn-default'%>
-	</div>
-</nav>
+
+<%= render "layouts/header" %>
+
+<%= render "layouts/lateral" %>
+
 <%= yield %>
 
 </body>
