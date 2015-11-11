@@ -1,16 +1,19 @@
-<div class="col-md-2 col-sm-2"></div>
-
 <div class="col-md-6 col-sm-8 ">
-	<h3 class="text-center">Inicio de sesión</h3>
+	<h3>Inicio de sesión</h3>
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	  
+	  <% if devise_error_messages! != "" %>
+		<div class="alert alert-danger"> <h6>Error en email y/o password</h6> </div>
+	  <% end %>
+	  
 	  <div class="form-group">
 		<%= f.label :email %><br />
-		<%= f.email_field :email, autofocus: true, class:'form-control' %>
+		<%= f.email_field :email, autofocus: true, class:'form-control input-large' %>
 	  </div>
 
 	  <div class="form-group">
 		<%= f.label "Contraseña" %><br />
-		<%= f.password_field :password, autocomplete: "off",class:'form-control' %>
+		<%= f.password_field :password, autocomplete: "off",class:'form-control input-large' %>
 	  </div>
 
 	  <% if devise_mapping.rememberable? -%>

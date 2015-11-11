@@ -1,0 +1,24 @@
+<div class="col-md-8 col-sm-6">
+	<h3>Añadir tipo de Couch</h3>
+	<%= render "form" %>
+	<h3>Lista de tipos existentes</h3>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>Tipo</td>
+				<th colspan="2"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% Tipo.all.each do |t| %>
+				<% if t.borrado == false %>
+					<tr>
+						<td><%= t.tipo %></td>
+						<td><%= link_to 'Editar', edit_tipo_path(t) ,class:'btn btn-primary'%></td>
+						<td><%= link_to 'Eliminar', t, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+</div>

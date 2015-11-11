@@ -1,0 +1,12 @@
+
+/*
+ * Clase para cambiar el estilo de el cambio de páginas que hace la gema
+ * will_paginate
+ */
+.pagination {
+  .previous_page { background:white; color:#7777ff }
+  .previous_page.disabled { background: white; color: #777 }
+  .current { background: white }
+  .next_page { background: white; color: #7777ff }
+  .next_page.disabled { background: white; color: #777 }
+}

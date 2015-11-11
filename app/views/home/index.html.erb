@@ -1,13 +1,15 @@
 
 <div class="col-md-8 col-xs-8">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<%= image_tag 'ejemplo.jpg',title:'ejemplo' ,class:'img-responsive center-block' %>
+	<% Couch.all.each do |couch| %>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<%= image_tag couch.imageurl ,title:'ejemplo' ,class:'img-responsive center-block' %>
+			</div>
+			<div class="panel-body">
+				<p> Tipo de Couch: <%= Tipo.find(couch.tipo_id).tipo %>
+				<p>	Descripción <%= couch.descripcion %> </p>
+				<p>	Capacidad: <%= couch.capacidad %>	</p>
+			</div>
 		</div>
-		<div class="panel-body">
-			<p>
-				Acá iría la información y demas detalles.
-			</p>
-		</div>
-	</div>
+	<% end %>
 </div>

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+	has_many :couchs , dependent: :destroy
+
   validates_length_of :nombre, :minimum => 2
   validates_length_of :apellido, :minimum => 2
   
