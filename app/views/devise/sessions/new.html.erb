@@ -2,9 +2,7 @@
 	<h3>Inicio de sesión</h3>
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 	  
-	  <% if devise_error_messages! != "" %>
-		<div class="alert alert-danger"> <h6>Error en email y/o password</h6> </div>
-	  <% end %>
+	 
 	  
 	  <div class="form-group">
 		<%= f.label :email %><br />
