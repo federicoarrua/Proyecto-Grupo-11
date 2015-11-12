@@ -20,6 +20,7 @@ admin.password_confirmation="administrador"
 admin.email="admin@couchinn.com"
 admin.nombre="Admin"
 admin.apellido="Admin"
+admin.fecha=Date.new(1990,1,1)
 admin.admin=true
 admin.save
 
@@ -29,6 +30,7 @@ user.password_confirmation="password"
 user.email="ejemplo@couchinn.com"
 user.nombre="Nombre"
 user.apellido="Apellido"
+user.fecha=Date.new(1990,1,1)
 user.save
 
 couch=Couch.create

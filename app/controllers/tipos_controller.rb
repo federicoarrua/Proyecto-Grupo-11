@@ -5,17 +5,20 @@ class TiposController < ApplicationController
 	def index
 		@tipo = Tipo.new
 	end
-	
-		def create
+
+	def create
 		@tipo = Tipo.new(tipo_params)
-		
+
 		if Tipo.where(tipo:@tipo.tipo).exists?
-			@tipo = Tipo.find_by(tipo:@tipo.tipo)
+			if Tipo.find_by(tipo:@tipo.tipo).borrado == true
+				@tipo = Tipo.find_by(tipo:@tipo.tipo)
+				@tipo.borrado = false
+			end
 		end
-		@tipo.borrado = false
 		respond_to do |format|
 		  if @tipo.save
-			format.html { redirect_to tipos_path, notice: 'Tipo agregado' }
+			flash[:success] = "Tipo agregado"
+			format.html { redirect_to tipos_path }
 			format.json { render :index, status: :created, location: @tipo }
 		  else
 			format.html { render :index }
@@ -30,7 +33,8 @@ class TiposController < ApplicationController
 	def update
 		respond_to do |format|
 			if @tipo.update(tipo_params)
-				format.html { redirect_to tipos_path, notice: 'Tipo Actualizado' }
+				flash[:update] = "Tipo Actualizado."
+				format.html { redirect_to tipos_path }
 				format.json { render :index, status: :ok, location: @tipo }
 			else
 				format.html { render :edit }
@@ -43,7 +47,8 @@ class TiposController < ApplicationController
 		@tipo.borrado = true
 		@tipo.save
 		respond_to do |format|
-		  format.html { redirect_to tipos_url, notice: 'Tipo eliminado.' }
+		  flash[:update] = @tipo.tipo + " eliminado."
+		  format.html { redirect_to tipos_url }
 		  format.json { head :no_content }
 		end
 	end

@@ -1,7 +1,18 @@
 <div class="col-md-8 col-sm-6">
 	<h3>Añadir tipo de Couch</h3>
+	
+	<% if flash[:success] %>
+		<div class="alert alert-success"><%= flash[:success] %></div>
+	<% end %>
+	
 	<%= render "form" %>
+	
 	<h3>Lista de tipos existentes</h3>
+	
+	<% if flash[:update] %>
+		<div class="alert alert-warning"><%= flash[:update] %></div>
+	<% end %>
+	
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -15,7 +26,7 @@
 					<tr>
 						<td><%= t.tipo %></td>
 						<td><%= link_to 'Editar', edit_tipo_path(t) ,class:'btn btn-primary'%></td>
-						<td><%= link_to 'Eliminar', t, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+						<td><%= link_to 'Eliminar', t, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %></td>
 					</tr>
 				<% end %>
 			<% end %>

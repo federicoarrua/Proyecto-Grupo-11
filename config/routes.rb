@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get 'couches/index'
 
   devise_for :users, :controllers => { 
-		registrations: 'registrations' 
+		registrations: 'registrations',
+		sessions: 'sessions'
 	}
   
   resources :tipos

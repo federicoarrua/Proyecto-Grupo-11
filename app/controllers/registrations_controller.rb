@@ -134,11 +134,11 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    params.require(:user).permit(:nombre,:apellido, :email, :password, :password_confirmation,:pais)
+    params.require(:user).permit(:nombre, :apellido, :pais, :fecha, :email, :password, :password_confirmation)
   end
 
   def account_update_params
-    params.require(:user).permit( :nombre,:apellido,:email,:pais, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:nombre, :apellido, :pais, :fecha, :email, :password, :password_confirmation, :current_password)
   end
 
   def translation_scope

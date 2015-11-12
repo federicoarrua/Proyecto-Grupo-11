@@ -3,16 +3,16 @@
 		
 		<% if @tipo.errors.any? %>
 			<div class="alert alert-danger">
-			  <h6><%= @tipo.errors.count %> :No se puede guardar el tipo:</h6>
+			  <h6>No se puede guardar el tipo:</h6>
 
 			  <ul>
 			  <% @tipo.errors.full_messages.each do |message| %>
-				<li><h6><%= message %></h6></li>
+				<li><h6>El <%= message %></h6></li>
 			  <% end %>
 			  </ul>
 			</div>
 		<% end %>
-		
+
 		<div class="form-group">
 			<%= f.label :tipo %><br />
 			<%= f.text_field :tipo, autofocus: true, class:'form-control input-medium' %>

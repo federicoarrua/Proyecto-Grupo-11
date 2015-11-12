@@ -1,9 +1,11 @@
 <div class="col-md-6 col-sm-8 ">
 	<h3>Inicio de sesión</h3>
+	<% if flash[:alert] %>
+		<div class="alert alert-danger"> <%= flash[:alert] %> </div>
+	<% end %>
+	
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-	  
-	 
-	  
+		  
 	  <div class="form-group">
 		<%= f.label :email %><br />
 		<%= f.email_field :email, autofocus: true, class:'form-control input-large' %>
