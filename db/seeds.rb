@@ -28,7 +28,7 @@ user=User.new
 user.password="password"
 user.password_confirmation="password"
 user.email="ejemplo@couchinn.com"
-user.nombre="Nombre"
+user.nombre="Ejemplo"
 user.apellido="Apellido"
 user.fecha=Date.new(1990,1,1)
 user.save
@@ -37,8 +37,8 @@ couch=Couch.create
 couch.imageurl= 'http://ojodecasas.com/wp-content/uploads/2015/07/PR_FOTO_2220_quillay_v02.jpg'
 couch.descripcion = "Hermosa casa con ubicacion excelente"
 couch.capacidad = 4
-couch.user_id = User.first.id
-couch.tipo_id = Tipo.first.id
+couch.user_id = 1
+couch.tipo_id = 1
 couch.save
 
 couch=Couch.create
@@ -51,8 +51,8 @@ couch.save
 
 couch=Couch.create
 couch.imageurl= 'http://casas-de-aldea.com/wp-content/uploads/2015/10/fotos-de-casas-lindas-vluzvjzsa.jpg'
-couch.descripcion = "Casa amplia con muchas ventasnas y muy buena vista"
+couch.descripcion = "Casa amplia con muchas ventanas y muy buena vista"
 couch.capacidad = 5
-couch.user_id = 1
+couch.user_id = 2
 couch.tipo_id = 1
 couch.save
