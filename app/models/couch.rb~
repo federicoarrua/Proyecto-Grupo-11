@@ -1,0 +1,6 @@
+class Couch < ActiveRecord::Base
+	belongs_to :tipo
+	belongs_to :user
+end
+
+<%= form_for_other.collection_select :tipo_id, Tipo.all, :id, :tipo, :prompt => true %>

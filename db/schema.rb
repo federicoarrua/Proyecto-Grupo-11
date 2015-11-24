@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124042052) do
+ActiveRecord::Schema.define(version: 20151124161430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,15 +22,20 @@ ActiveRecord::Schema.define(version: 20151124042052) do
     t.string   "imageurl"
     t.integer  "tipo_id"
     t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "foto_file_name"
-    t.string   "foto_content_type"
-    t.integer  "foto_file_size"
-    t.datetime "foto_updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "couches", ["tipo_id"], name: "index_couches_on_tipo_id", using: :btree
+
+  create_table "reservas", force: :cascade do |t|
+    t.integer  "nombre_id"
+    t.integer  "couch_id"
+    t.date     "ingreso"
+    t.date     "salida"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tipos", force: :cascade do |t|
     t.string   "tipo"

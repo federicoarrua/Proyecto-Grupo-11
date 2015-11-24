@@ -1,0 +1,25 @@
+
+
+
+
+<%= form_for :reserva, url: reservas_path do |f| %>
+
+
+  <p>
+    <%= f.label :Ingreso %><br>
+    <%= f.date_select :ingreso, :order => [:day, :month, :year], :start_year=>2015 %>
+  </p>
+ 
+  <p>
+    <%= f.label :Salida %><br>
+    <%= f.date_select :salida, :order => [:day, :month, :year], :start_year=>2015 %>
+  </p>
+ 	
+	couch_id = params[:id]
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+

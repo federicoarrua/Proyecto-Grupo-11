@@ -1,0 +1,13 @@
+<div class="col-md-2 col-xs-4 list-group">
+	<%= link_to "Buscar Couch","#",class:'list-group-item' %> 
+        <%= link_to "Acerca de","#",class:'list-group-item' %>
+
+	<% if current_user.try(:admin?) %>
+		<%= link_to "Modificar tipos de Couchs",tipos_path,class:'list-group-item' %>
+	<% end %>
+	<% if current_user %>
+	<%= link_to "Ver lista de Couchs",root_path,class:'list-group-item' %>
+	 <%= link_to "Ver mis Couchs", couches_path(),class:'list-group-item' %>
+	<%= link_to "Agregar un couch", "new_couch_path",class:'list-group-item' %>
+	<% end %>
+</div>

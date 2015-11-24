@@ -24,7 +24,7 @@ default: &default
   username: maurodb
   password: mauro
 
-development:
+#development:
   <<: *default
   database: couchinn_development
 
