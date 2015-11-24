@@ -1,6 +1,13 @@
 class Couch < ActiveRecord::Base
 	belongs_to :tipo
 	belongs_to :user
+	
+	validates :ciudad,
+		presence: true,
+		length: {minimum: 2 ,maximum:20}
+	
+	validates :capacidad,
+		presence: true
 
 	has_attached_file :foto, :styles => { :small => "1280x720>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",
