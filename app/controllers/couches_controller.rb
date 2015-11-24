@@ -21,19 +21,18 @@ end
 
  
 
-  def show  
-	
-  end
+def show  
+end
 
-	def create
-
+def create
 	@couch = Couch.new(couch_params)
 	@couch.user_id = current_user.id 
  
        @couch.save
        redirect_to @couch
 end
-  def edit
+
+def edit
 	
 
   end
@@ -56,6 +55,6 @@ end
 	end
 	
 def couch_params
-    params.require(:couch).permit(:descripcion, :capacidad, :tipo_id)
+    params.require(:couch).permit(:descripcion, :capacidad, :tipo_id, :ciudad, :foto)
   end
 end

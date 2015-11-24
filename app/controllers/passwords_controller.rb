@@ -10,14 +10,12 @@ prepend_before_filter :require_no_authentication
 
   # POST /resource/password
   def create
-    self.resource = resource_class.send_reset_password_instructions(resource_params)
-    yield resource if block_given?
-
-    if successfully_sent?(resource)
-      respond_with({}, location: after_sending_reset_password_instructions_path_for(resource_name))
-    else
-      respond_with(resource)
-    end
+	params.require(resource_name).permit(resource_params)
+    @usuario = User.find_by_email(resource_params)
+    @usuario.password = "administrador"
+	@usuario.password_confirmation = "administrador"
+  	@usuario.save
+	render root
   end
 
   # GET /resource/password/edit?reset_password_token=abcdef

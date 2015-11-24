@@ -2,12 +2,13 @@
 	<div class="panel panel-default">
 		<% if @couch.id!=nil %>
 			<div class="panel-heading">
-				<%= image_tag @couch.imageurl ,title:'Couch-img' ,class:'img-responsive center-block' %>
+				<%= image_tag @couch.foto.url(:small) ,title:'Couch-img' ,class:'img-responsive center-block' %>
 			</div>
 			<div class="panel-body">
 				<p> Tipo de Couch: <%= Tipo.find(@couch.tipo_id).tipo %>
 				<p>	Descripción <%= @couch.descripcion %> </p>
 				<p>	Capacidad: <%= @couch.capacidad %>	</p>
+				<p>	Ciudad: <%= @couch.ciudad %>	</p>
 				<p> Dueño: <%= User.find(@couch.user_id).nombre %> </p>
 			<% if current_user.id==@couch.user_id %>
  <div class="actions col-md-2 col-sm-3">

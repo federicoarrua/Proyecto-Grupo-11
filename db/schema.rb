@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124161430) do
+ActiveRecord::Schema.define(version: 20151124200529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,15 @@ ActiveRecord::Schema.define(version: 20151124161430) do
   create_table "couches", force: :cascade do |t|
     t.integer  "capacidad"
     t.text     "descripcion"
-    t.string   "imageurl"
+    t.string   "ciudad"
     t.integer  "tipo_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.datetime "foto_updated_at"
   end
 
   add_index "couches", ["tipo_id"], name: "index_couches_on_tipo_id", using: :btree
@@ -60,8 +64,8 @@ ActiveRecord::Schema.define(version: 20151124161430) do
     t.string   "nombre"
     t.string   "apellido"
     t.string   "pais"
-    t.boolean  "admin",                  default: false
     t.date     "fecha"
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

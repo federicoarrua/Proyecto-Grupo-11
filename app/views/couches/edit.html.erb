@@ -20,6 +20,10 @@
 		<%= f.collection_select :tipo_id, Tipo.all, :id, :tipo, :selected => @couch.tipo_id  %>
 	
 </p>
+  <p>
+  		  <%= f.label :ciudad %><br>
+  		  <%= f.text_field :ciudad %>
+  </p>
 
 
 		
