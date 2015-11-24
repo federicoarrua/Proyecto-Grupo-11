@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 	}
   
   resources :tipos
-  resources :reservas
+  
   resources :couches 
 
   #resources :couches do

@@ -1,5 +1,5 @@
 class Tipo < ActiveRecord::Base
-has_many :couches
+has_many :couch
 	validates :tipo,
 		presence: true,
 		uniqueness: {case_sensitive: false},

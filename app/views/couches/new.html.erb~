@@ -1,0 +1,42 @@
+<div class="col-md-8 col-xs-8">
+	<div class="panel panel-default">
+	<div class="panel-heading">
+				<h1>Agregue un couch!</h1>
+			</div>
+
+	<div class="panel-body">
+<%= form_for :couch, url: couches_path do |f| %>
+
+
+  <p>
+    <%= f.label :Descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </p>
+ 
+  <p>
+    <%= f.label :Capacidad %><br>
+    <%= f.text_field :capacidad %>
+  </p>
+ <p>
+ 
+<%= f.label :Tipo %> <br>
+ <%= f.collection_select :tipo_id, Tipo.all, :id, :tipo%>
+
+ </p>
+
+ <p>
+		<%= f.label :imagen %><br>
+		<%= f.url_field :imageurl %>
+	
+</p>
+
+ <div class="actions col-md-2 col-sm-2">
+  <p>
+    <%= f.submit %>
+  </p>
+</div>
+<% end %>
+	</div>
+
+	</div>
+

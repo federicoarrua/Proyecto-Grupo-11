@@ -7,7 +7,7 @@
 	<% end %>
 	<% if current_user %>
 	<%= link_to "Ver lista de Couchs",root_path,class:'list-group-item' %>
-	 <%= link_to "Ver mis Couchs", couches_path,class:'list-group-item' %>
-	<%= link_to "Agregar un couch", new_couch_path,class:'list-group-item' %>
+	 <%= link_to "Ver mis Couchs", couches_path(),class:'list-group-item' %>
+	<%= link_to "Agregar un couch", "new_couch_path",class:'list-group-item' %>
 	<% end %>
 </div>
