@@ -37,22 +37,25 @@ couch=Couch.create
 couch.descripcion = "Hermosa casa con ubicacion excelente"
 couch.foto = File.open('app/assets/images/casa.jpg')
 couch.capacidad = 4
+couch.ciudad = "Ushuaia"
 couch.user_id = 1
 couch.tipo_id = 1
 couch.save
 
 couch=Couch.create
 couch.descripcion = "Bonita casa con propietarios ansiosos de conocer gente nueva"
-couch.foto = File.open('app/assets/images/casa.jpg')
+couch.foto = File.open('app/assets/images/casa2.jpg')
 couch.capacidad = 10
+couch.ciudad = "Bariloche"
 couch.user_id = 2
 couch.tipo_id = 2
 couch.save
 
 couch=Couch.create
 couch.descripcion = "Casa amplia con muchas ventanas y muy buena vista"
-couch.foto = File.new('app/assets/images/casa.jpg')
+couch.foto = File.new('app/assets/images/casa3.png')
 couch.capacidad = 5
+couch.ciudad = "Neuquen"
 couch.user_id = 2
 couch.tipo_id = 1
 couch.save
