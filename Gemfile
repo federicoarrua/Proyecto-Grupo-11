@@ -6,6 +6,8 @@ gem 'paperclip'
 
 gem 'country_select'
 
+gem 'validates_timeliness', '~> 3.0'
+
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

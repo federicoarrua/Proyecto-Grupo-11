@@ -18,6 +18,7 @@ Rails.application.routes.draw do
        	get "rechazar"
 	get "cancelar"
 	get "eliminar"
+
     end
    end
 

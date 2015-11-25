@@ -1,21 +1,34 @@
+<div class="col-md-8 col-sm-8">
 
+	<h1> Reserva </h1>
 
-<h1> Reserva </h1>
-
-<%= form_for :reserva, url: reservas_path do |f| %>
-
-    <%= f.label :Ingreso %><br>
-    <%= f.date_select :ingreso, :order => [:day, :month, :year], :start_year=>2015 %>
+	<%= form_for :reserva, url: reservas_path do |f| %>
 	
-	<br></br>
+				<% if @reserva.errors.any? %>
+					<div class="alert alert-danger">
+					  <h6>Problemas en el registro:</h6>
+					  <ul>
+					  
+						<li><h6>La salida no puede ser igual o menor que el ingreso</h6></li>
+					  
+					  </ul>
+					</div>
+				<% end %>
 
-    <%= f.label :Salida %><br>
-    <%= f.date_select :salida, :order => [:day, :month, :year], :start_year=>2015 , class:'selectpicker'%>
+	
+		<%= f.label :Ingreso %><br>
+		<%= f.date_select :ingreso, :order => [:day, :month, :year], :start_year=>Date.today.year %>
+	
+		<br></br>
 
-	<br></br>
+		<%= f.label :Salida %><br>
+		<%= f.date_select :salida, :order => [:day, :month, :year], :start_year=>Date.today.year, class:'selectpicker'%>
 
-    <%= f.submit "Aceptar", class:'btn btn-primary' %>
+		<br></br>
 
-<% end %>
+		<%= f.submit "Aceptar", class:'btn btn-primary' %>
 
+	<% end %>
+
+</div>
 

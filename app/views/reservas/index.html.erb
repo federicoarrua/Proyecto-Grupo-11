@@ -1,4 +1,6 @@
+
 <div class="col-md-8 col-sm-6">
+	<h1> Reservas solicitadas </h1>
 	<table class="table table-striped">
 	  <thead>
 		  <tr>
@@ -17,25 +19,76 @@
 	  <tbody>
 	<% @reservas.each do |reserva| %>
 	  <tr>
+		<% if reserva.estado!="Eliminado" %>
 		<% if current_user.id==Couch.find(reserva.couch_id).user_id %>
 
-		<td><%= reserva.couch_id %></td>
+                <td><%= link_to 'Ver Couch', couch_path(reserva.couch_id),class:'btn btn-default' %>
 		<td><%= User.find(reserva.nombre_id).nombre %></td>
 		<td><%= reserva.ingreso %></td>
 		<td><%= reserva.salida %></td>	
 		<td><%= reserva.estado %></td>
-		<% 	if reserva.estado == "Pendiente" %>
+		<% 	if reserva.estado == "pendiente" %>
 	
 			<td><%= link_to 'Aceptar', aceptar_reserva_path(reserva.id),class:'btn btn-primary' %></td>
 			<td><%= link_to 'Rechazar',rechazar_reserva_path(reserva.id),class:'btn btn-warning',data: { confirm: 'Está seguro?' } %></td>
 	
 		<% else %>
-			<% if reserva.estado!="Cancelado" %>
+			<% if reserva.estado!="Cancelado" and reserva.estado!="Rechazado" %>
 				<td><%= link_to 'Cancelar', cancelar_reserva_path(reserva.id),class:'btn btn-danger',data: { confirm: 'Está seguro?' } %></td>
-			<% end %>
+		
+			
+		<% end %>
 		<% end %>
 	<% end %>
 	  </tr>
+	<% end %>
+<% end %>
+
+	  </tbody>
+	</table>
+</div>
+
+
+<div class="col-md-8 col-sm-6">
+<h1> Mis Reservas </h1>
+	<table class="table table-striped">
+	  <thead>
+		  <tr>
+			<th>Reserva</th>
+			<th>Usuario</th>
+	
+			<th>Ingreso</th>
+	
+			<th>Salida</th>
+			<th>Estado</th>
+	
+		   
+		  </tr>
+	  </thead>
+	  
+	  <tbody>
+	<% @reservas.each do |reserva| %>
+	  <tr>
+	<% if reserva.estado!="Eliminado" %>
+		<% if current_user.id==reserva.nombre_id %>
+
+		<td><%= link_to 'Ver Couch', couch_path(reserva.couch_id),class:'btn btn-default' %>
+		<td><%= User.find(reserva.nombre_id).nombre %></td>
+		<td><%= reserva.ingreso %></td>
+		<td><%= reserva.salida %></td>	
+		<td><%= reserva.estado %></td>
+	
+		
+
+			<% if reserva.estado!="Cancelado" and reserva.estado!="Rechazado" %>
+				<td><%= link_to 'Cancelar', cancelar_reserva_path(reserva.id),class:'btn btn-danger',data: { confirm: 'Está seguro?' } %></td>
+		<% else %>
+ 			<td><%= link_to 'Eliminar', eliminar_reserva_path(reserva.id),class:'btn btn-default'%></td>
+			
+		<% end %>
+	<% end %>
+	  </tr>
+	<% end %>
 	<% end %>
 	  </tbody>
 	</table>

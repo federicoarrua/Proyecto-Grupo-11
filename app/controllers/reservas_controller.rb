@@ -12,7 +12,9 @@ def new
 end
 
 def edit
-	 flash[:id] = params[:id]
+	flash[:id] = params[:id]
+	 @reserva = Reserva.new
+	 
 end
 
 def create
@@ -20,8 +22,19 @@ def create
   @reserva.nombre_id = current_user.id
   @reserva.couch_id = flash[:id]
   @reserva.estado= "pendiente"
-  @reserva.save
-  redirect_to root_path
+  respond_to do |format|
+		if @reserva.save
+				flash[:update] = "Reserva hecha."
+				format.html { redirect_to reservas_path }
+				format.json { render :index, status: :ok, location: @reserva }
+		else
+				flash[:id] = @reserva.couch_id
+				format.html { render :edit }
+				format.json { render json: @reserva.errors, status: :unprocessable_entity }
+		end
+  end
+ 
+  
 end
 
 def reserva_params
