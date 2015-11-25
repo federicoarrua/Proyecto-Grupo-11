@@ -13,7 +13,7 @@ class Couch < ActiveRecord::Base
 	validates :capacidad,
 		presence: true
 	
-	validates_numericality_of :capacidad, :greater_than => 1	
+	validates_numericality_of :capacidad, :greater_than => 0	
 	
 	has_attached_file :foto, :styles => { :original => "1280x720>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",
