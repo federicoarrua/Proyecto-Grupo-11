@@ -15,7 +15,7 @@ class Couch < ActiveRecord::Base
 	
 	validates_numericality_of :capacidad, :greater_than => 1	
 	
-	has_attached_file :foto, :styles => { :small => "1280x720>" },
+	has_attached_file :foto, :styles => { :original => "1280x720>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
 
