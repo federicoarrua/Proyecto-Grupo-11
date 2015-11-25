@@ -11,6 +11,17 @@
 						<p>	Capacidad: <%= couch.capacidad %>	</p>
 						<p>	Ciudad: <%= couch.ciudad %>	</p>
 						<p> Dueño: <%= User.find(couch.user_id).nombre %> </p>
+						<% if user_signed_in? %>						
+							<% if current_user.id==couch.user_id %>
+								<div class="actions col-md-2 col-sm-3">
+									<%= link_to "Editar  ",edit_couch_path(couch.id),class:'btn btn-default' %>
+						
+									<%= link_to 'Eliminar', couch_path(couch),method: :delete, data: { confirm: '¿Está seguro?' }, class:'btn btn-danger' %>
+								</div>
+					 		<% else %>		
+								<%= link_to "reservar",edit_reserva_path(couch),class:'btn btn-default' %>
+							<% end %>
+						<% end %>
 					</div>
 				<% end %>
 			</div>

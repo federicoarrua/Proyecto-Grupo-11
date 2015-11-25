@@ -5,6 +5,7 @@ class CreateReservas < ActiveRecord::Migration
       t.integer :couch_id
       t.date :ingreso
       t.date :salida
+      t.string :estado
 
       t.timestamps null: false
     end

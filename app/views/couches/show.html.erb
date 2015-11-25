@@ -11,16 +11,15 @@
 				<p>	Ciudad: <%= @couch.ciudad %>	</p>
 				<p> Dueño: <%= User.find(@couch.user_id).nombre %> </p>
 			<% if current_user.id==@couch.user_id %>
- <div class="actions col-md-2 col-sm-3">
-		<p> <%= link_to "editar",edit_couch_path(@couch.id),class:'btn btn-default' %> </p>
-		<p> <%= link_to "reservar",edit_reserva_path(@couch),class:'btn btn-default' %> </p>
-		<p> <%= link_to 'eliminar', couch_path(@couch),
-                    method: :delete, data: { confirm: '¿Está seguro?' }, class:'btn btn-danger' %> </p>
-</div>
-	 
-	<% end %>		
-			
-			</div>
+				 <div class="actions col-md-2 col-sm-3">
+						<%= link_to "Editar  ",edit_couch_path(@couch.id),class:'btn btn-default' %>
+						
+						<%= link_to 'Eliminar', couch_path(@couch),method: :delete, data: { confirm: '¿Está seguro?' }, class:'btn btn-danger' %>
+				</div>
+	 		<% else %>		
+				<%= link_to "reservar",edit_reserva_path(@couch),class:'btn btn-default' %>
+			<% end %>
+		</div>
 		<% end %>
 	</div>
 </div>

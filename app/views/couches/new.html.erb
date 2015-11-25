@@ -1,48 +1,44 @@
 <div class="col-md-8 col-xs-8">
 	<div class="panel panel-default">
-	<div class="panel-heading">
-				<h1>Agregue un couch!</h1>
-			</div>
+		<div class="panel-heading">
+					<h1>Agregue un couch!</h1>
+				</div>
 
-	<div class="panel-body">
-<%= form_for :couch, url: couches_path do |f| %>
+		<div class="panel-body">
+	<%= form_for @couch, url: couches_path do |f| %>
 
+			<% if @couch.errors.any? %>
+				<div class="alert alert-danger">
+				  <h6>Problemas en el registro:</h6>
+				  <ul>
+				  <% @couch.errors.full_messages.each do |message| %>
+						<li><h6><%= message %></h6></li>
+				  <% end %>
+				  </ul>
+				</div>
+			<% end %>			
+			
+			<%= f.label :Descripcion %>
+	 	    <%= f.text_area :descripcion, autofocus: true, class:'form-control input-medium', rows:3 %>
 
-  <p>
-    <%= f.label :Descripcion %><br>
-    <%= f.text_field :descripcion %>
-  </p>
- 
-  <p>
-    <%= f.label :Capacidad %><br>
-    <%= f.text_field :capacidad %>
-  </p>
- <p>
- 
-<%= f.label :Tipo %> <br>
- <%= f.collection_select :tipo_id, Tipo.all, :id, :tipo%>
-
- </p>
-
- <p>
-		<%= f.label :ciudad %><br>
-		<%= f.text_field :ciudad %>
+	 	    <%= f.label :Capacidad %>
+			<%= f.text_field :capacidad, autofocus: true, class:'form-control input-medium' %>
+	 
+			<%= f.label :Tipo %><br>
+	 		<%= f.collection_select :tipo_id, Tipo.all, :id, :tipo%>
+			<br></br>
+			<%= f.label :ciudad %>
+			<%= f.text_field :ciudad , autofocus: true, class:'form-control input-medium'%>
 	
-</p>
-
- <p>
-		<%= f.label :foto %><br>
-		<%= f.file_field :foto %>
+			<%= f.label :foto %>
+			<%= f.file_field :foto, class:'btn btn-default'%>
 	
-</p>
+			<br></br>			
 
- <div class="actions col-md-2 col-sm-2">
-  <p>
-    <%= f.submit %>
-  </p>
+			<%= f.submit "Publicar Couch",class:'btn btn-primary'%>
+
+		</div>
+	<% end %>
+	</div>
 </div>
-<% end %>
-	</div>
-
-	</div>
 

@@ -1,25 +1,21 @@
 
 
-
+<h1> Reserva </h1>
 
 <%= form_for :reserva, url: reservas_path do |f| %>
 
-
-  <p>
     <%= f.label :Ingreso %><br>
     <%= f.date_select :ingreso, :order => [:day, :month, :year], :start_year=>2015 %>
-  </p>
- 
-  <p>
-    <%= f.label :Salida %><br>
-    <%= f.date_select :salida, :order => [:day, :month, :year], :start_year=>2015 %>
-  </p>
- 	
-	couch_id = params[:id]
+	
+	<br></br>
 
-  <p>
-    <%= f.submit %>
-  </p>
+    <%= f.label :Salida %><br>
+    <%= f.date_select :salida, :order => [:day, :month, :year], :start_year=>2015 , class:'selectpicker'%>
+
+	<br></br>
+
+    <%= f.submit "Aceptar", class:'btn btn-primary' %>
+
 <% end %>
 
 

@@ -5,32 +5,37 @@
 				<h1>Edite su couch!</h1>
 			</div>
 			<div class="panel-body">
-<%= form_for :couch, url: couch_path(@couch), method: :patch do |f| %> 
-				 <p> 
-		<%= f.label :Descripción %><br>
-    		<%= f.text_field:descripcion %>
- 				 </p>
- 
-  <p>
-  		  <%= f.label :Capacidad %><br>
-  		  <%= f.text_field:capacidad %>
-  </p>
- <p>
-		<%= f.label :Tipo %><br>
-		<%= f.collection_select :tipo_id, Tipo.all, :id, :tipo, :selected => @couch.tipo_id  %>
+			<%= form_for @couch, url: couch_path(@couch), method: :patch do |f| %> 
+
+				<% if @couch.errors.any? %>
+					<div class="alert alert-danger">
+					  <h6>Problemas en el registro:</h6>
+					  <ul>
+					  <% @couch.errors.full_messages.each do |message| %>
+							<li><h6><%= message %></h6></li>
+					  <% end %>
+					  </ul>
+					</div>
+				<% end %>	
+
+				<%= f.label :Descripcion %>
+	 	    	<%= f.text_area :descripcion, autofocus: true, class:'form-control input-medium', rows:3 %>
+
+		 	    <%= f.label :Capacidad %>
+				<%= f.text_field :capacidad, autofocus: true, class:'form-control input-medium' %>
+		 
+				<%= f.label :Tipo %><br>
+		 		<%= f.collection_select :tipo_id, Tipo.all, :id, :tipo%>
+				<br></br>
+				<%= f.label :ciudad %>
+				<%= f.text_field :ciudad , autofocus: true, class:'form-control input-medium'%>
 	
-</p>
-  <p>
-  		  <%= f.label :ciudad %><br>
-  		  <%= f.text_field :ciudad %>
-  </p>
+				<%= f.label :foto %>
+				<%= f.file_field :foto, class:'btn btn-default' %>
+	
+				<br></br>			
 
-
-		
- <div class="actions col-md-2 col-sm-2">
-		 <p>
-    <%= f.submit %>
-  </p>
+				<%= f.submit "Publicar Couch",class:'btn btn-primary'%>
 </div>
 	 <% end %>
 			

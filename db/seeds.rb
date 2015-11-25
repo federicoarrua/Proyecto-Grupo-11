@@ -34,24 +34,24 @@ user.fecha=Date.new(1990,1,1)
 user.save
 
 couch=Couch.create
-couch.imageurl= 'http://ojodecasas.com/wp-content/uploads/2015/07/PR_FOTO_2220_quillay_v02.jpg'
 couch.descripcion = "Hermosa casa con ubicacion excelente"
+couch.foto = File.open('app/assets/images/casa.jpg')
 couch.capacidad = 4
 couch.user_id = 1
 couch.tipo_id = 1
 couch.save
 
 couch=Couch.create
-couch.imageurl= 'http://www.casadivina.net/wp-content/uploads/2015/01/CasaDivinaWebsite.jpg'
 couch.descripcion = "Bonita casa con propietarios ansiosos de conocer gente nueva"
+couch.foto = File.open('app/assets/images/casa.jpg')
 couch.capacidad = 10
 couch.user_id = 2
 couch.tipo_id = 2
 couch.save
 
 couch=Couch.create
-couch.imageurl= 'http://casas-de-aldea.com/wp-content/uploads/2015/10/fotos-de-casas-lindas-vluzvjzsa.jpg'
 couch.descripcion = "Casa amplia con muchas ventanas y muy buena vista"
+couch.foto = File.new('app/assets/images/casa.jpg')
 couch.capacidad = 5
 couch.user_id = 2
 couch.tipo_id = 1

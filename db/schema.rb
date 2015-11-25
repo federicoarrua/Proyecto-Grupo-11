@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20151124200529) do
     t.integer  "couch_id"
     t.date     "ingreso"
     t.date     "salida"
+    t.string   "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

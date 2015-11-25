@@ -9,14 +9,17 @@ Rails.application.routes.draw do
 	}
   
   resources :tipos
-  resources :reservas
+  #resources :reservas
   resources :couches 
 
-  #resources :couches do
-   # collection do
-   #   get "mostrar"
-   # end
-   #end
+  resources :reservas do
+    member do
+      	get "aceptar"
+       	get "rechazar"
+	get "cancelar"
+	get "eliminar"
+    end
+   end
 
 
   	

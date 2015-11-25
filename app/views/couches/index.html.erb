@@ -12,8 +12,8 @@
 						<p>	Ciudad: <%= couch.ciudad %>	</p>
 						<p> Dueño: <%= User.find(couch.user_id).nombre %> </p>
 <div class="actions col-md-2 col-sm-3">
-		<p> <%= link_to "editar",edit_couch_path(couch.id),class:'btn btn-default' %> </p>
-		<p> <%= link_to 'eliminar', couch_path(couch),
+		<p> <%= link_to "Editar",edit_couch_path(couch.id),class:'btn btn-default' %> </p>
+		<p> <%= link_to 'Eliminar', couch_path(couch),
                     method: :delete, data: { confirm: '¿Está seguro?' }, class:'btn btn-danger' %> </p>
 </div>
 					</div>
