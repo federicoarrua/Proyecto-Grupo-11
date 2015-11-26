@@ -1,7 +1,17 @@
 class CouchesController < ApplicationController
   before_action :set_tipo, only: [:show,:edit,:update]
   
-  before_filter :verify_user
+ # before_filter :verify_user
+
+def vista
+	if params[:id]=="1"
+		@couches = Couch.ciudades.paginate(page: params[:page], per_page: 1)
+	else
+		@couches = Couch.capacidades.paginate(page: params[:page], per_page: 1)
+
+	end
+
+end
 
 
   def index

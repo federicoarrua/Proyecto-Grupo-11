@@ -1,5 +1,6 @@
 <div class="col-md-2 col-xs-4 list-group">
-	<%= link_to "Buscar Couch","#",class:'list-group-item' %> 
+	<%= link_to "Ordenar por ciudad",vista_couch_path(1),class:'list-group-item' %> 
+	<%= link_to "Ordenar por capacidad",vista_couch_path(2),class:'list-group-item' %> 
         <%= link_to "Acerca de","#",class:'list-group-item' %>
 
 	<% if current_user.try(:admin?) %>

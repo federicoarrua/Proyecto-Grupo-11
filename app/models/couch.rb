@@ -2,6 +2,9 @@ class Couch < ActiveRecord::Base
 	belongs_to :tipo
 	belongs_to :user
 	
+	scope :ciudades, -> { order("ciudad") }
+	scope :capacidades, -> {order("capacidad") }
+	
 	validates :descripcion,
 		presence: true,
 		length: {minimum: 10 ,maximum:140}	
