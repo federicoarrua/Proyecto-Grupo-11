@@ -19,7 +19,7 @@
 	  <tbody>
 	<% @reservas.each do |reserva| %>
 	  <tr>
-		<% if reserva.estado!="Eliminado" %>
+		<% if reserva.estado!="Eliminado" and reserva.estado!="AsistioE" %>
 		<% if current_user.id==Couch.find(reserva.couch_id).user_id %>
 
                 <td><%= link_to 'Ver Couch', couch_path(reserva.couch_id),class:'btn btn-default' %>
@@ -33,10 +33,13 @@
 			<td><%= link_to 'Rechazar',rechazar_reserva_path(reserva.id),class:'btn btn-warning',data: { confirm: 'Está seguro?' } %></td>
 	
 		<% else %>
-			<% if reserva.estado!="Cancelado" and reserva.estado!="Rechazado" %>
+			<% if reserva.estado!="Cancelado" and reserva.estado!="Rechazado" and reserva.estado!="Asistio" and reserva.estado!="No Asistio" %>
+				<td><%= link_to 'Asistio', asistir_reserva_path(reserva.id),class:'btn btn-default' %></td>		
+				<td><%= link_to 'No Asistio', cancelar_reserva_path(reserva.id),class:'btn btn-default' %></td>
 				<td><%= link_to 'Cancelar', cancelar_reserva_path(reserva.id),class:'btn btn-danger',data: { confirm: 'Está seguro?' } %></td>
 		
-			
+			<%else%>
+			<td><%= link_to 'Eliminar', eliminar_reserva_path(reserva.id),class:'btn btn-default'%></td>	
 		<% end %>
 		<% end %>
 	<% end %>
@@ -69,7 +72,7 @@
 	  <tbody>
 	<% @reservas.each do |reserva| %>
 	  <tr>
-	<% if reserva.estado!="Eliminado" %>
+	<% if reserva.estado!="Eliminado" and reserva.estado!="Asistio" and reserva.estado!="No Asistio" and reserva.estado!="AsistioE" %>
 		<% if current_user.id==reserva.nombre_id %>
 
 		<td><%= link_to 'Ver Couch', couch_path(reserva.couch_id),class:'btn btn-default' %>

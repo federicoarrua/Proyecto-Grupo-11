@@ -22,6 +22,7 @@ Rails.application.routes.draw do
        	get "rechazar"
 	get "cancelar"
 	get "eliminar"
+	get "asistir"
 
     end
    end

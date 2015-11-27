@@ -1,0 +1,38 @@
+
+<div class="col-md-8 col-sm-6">
+	<table class="table table-striped">
+	  <thead>
+		  <tr>
+			<th>Couch</th>
+	
+			<th>Ingreso</th>
+	
+			<th>Salida</th>
+			
+	
+		   
+		  </tr>
+	  </thead>
+	  
+	  <tbody>
+	<% @reservas.each do |reserva| %>
+	  <tr>
+	<% if reserva.estado=="Asistio" or reserva.estado=="AsistioE" %>
+		<% if current_user.id==reserva.nombre_id %>
+
+		<td><%= link_to 'Ver Couch', couch_path(reserva.couch_id),class:'btn btn-default' %>
+		
+		<td><%= reserva.ingreso %></td>
+		<td><%= reserva.salida %></td>	
+		
+	
+		
+
+			
+	<% end %>
+	  </tr>
+	<% end %>
+	<% end %>
+	  </tbody>
+	</table>
+</div>

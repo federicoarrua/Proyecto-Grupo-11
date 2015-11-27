@@ -8,7 +8,7 @@ class ReservasController < ApplicationController
 
 
 def new
-
+   @reservas = Reserva.all
 end
 
 def edit
@@ -70,7 +70,20 @@ end
 
 def eliminar
 @re=Reserva.find(params[:id])
+if @re.estado=="Asistio"
+	@re.estado="AsistioE"
+else
 @re.estado="Eliminado"
+end
+@re.save
+redirect_to reservas_path
+
+
+end
+
+def asistir
+@re=Reserva.find(params[:id])
+@re.estado="Asistio"
 @re.save
 redirect_to reservas_path
 
