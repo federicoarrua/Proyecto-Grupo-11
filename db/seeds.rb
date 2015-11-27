@@ -22,6 +22,7 @@ admin.nombre="Admin"
 admin.apellido="Admin"
 admin.fecha=Date.new(1990,1,1)
 admin.admin=true
+admin.cuenta=nil
 admin.save
 
 user=User.new
@@ -31,6 +32,7 @@ user.email="ejemplo@couchinn.com"
 user.nombre="Ejemplo"
 user.apellido="Apellido"
 user.fecha=Date.new(1990,1,1)
+user.cuenta="Base"
 user.save
 
 couch=Couch.create
