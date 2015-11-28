@@ -4,18 +4,28 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { 
 		registrations: 'registrations',
-		sessions: 'sessions'
+		sessions: 'sessions',
+		passwords: 'passwords'
 	}
-  
+  resources :cpuntajes
   resources :tipos
-  
-  resources :couches 
+  #resources :reservas
+   resources :couches do
+	member do
+		get "vista"
+	end
+	end 
 
-  #resources :couches do
-   # collection do
-   #   get "mostrar"
-   # end
-   #end
+  resources :reservas do
+    member do
+      	get "aceptar"
+       	get "rechazar"
+	get "cancelar"
+	get "eliminar"
+	get "asistir"
+
+    end
+   end
 
 
   	

@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 		sessions: 'sessions',
 		passwords: 'passwords'
 	}
-  
+  resources :cpuntajes
+  resources :upuntajes
   resources :tipos
   #resources :reservas
    resources :couches do

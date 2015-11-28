@@ -1,2 +1,23 @@
 class HomeController < ApplicationController
+
+def index
+
+@couches = Couch.all.paginate(page: params[:page], per_page: 1)
+
+@puntajes=Cpuntaje.all
+@cant=0.0
+@tot=0.0
+@punt=0.0
+@puntajes.each do |puntaje|
+		if puntaje.couch==Couch.find(current_page)
+			@cant=@cant+1
+			@tot=@tot+puntaje.puntaje
+		end
+	end
+if @cant!=0
+@punt=@tot/@cant
+end
+
+end
+
 end

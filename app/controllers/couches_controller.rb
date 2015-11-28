@@ -35,10 +35,15 @@ end
  
 
 def show  
+
 end
+
+
 
 def create
 	@couch = Couch.new(couch_params)
+	@couch.cant=1
+	@couch.punt=5
 	@couch.user_id = current_user.id 
     	respond_to do |format|
 	  if @couch.save

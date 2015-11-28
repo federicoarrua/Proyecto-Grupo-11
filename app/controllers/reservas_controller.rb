@@ -9,6 +9,9 @@ class ReservasController < ApplicationController
 
 def new
    @reservas = Reserva.all
+   #@puntajes = Cpuntaje.all
+
+	
 end
 
 def edit

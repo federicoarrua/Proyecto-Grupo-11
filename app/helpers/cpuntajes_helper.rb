@@ -1,0 +1,2 @@
+module CpuntajesHelper
+end

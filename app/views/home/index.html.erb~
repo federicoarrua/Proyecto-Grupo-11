@@ -2,14 +2,30 @@
 		<% @couches.each do |couch| %>
 			<div class="panel panel-default">
 				<% if couch.id!=nil %>
+					<% @couch=Couch.find(couch.id) %>
 					<div class="panel-heading">
-						<%= link_to image_tag(couch.imageurl ,title:'Couch-img' ,class:'img-responsive center-block'),couch %>
+						<%= link_to image_tag(couch.foto.url(:original) ,title:'Couch-img' ,class:'img-responsive center-block'),couch %>
 					</div>
 					<div class="panel-body">
 						<p> Tipo de Couch: <%= Tipo.find(couch.tipo_id).tipo %>
 						<p>	Descripción <%= couch.descripcion %> </p>
 						<p>	Capacidad: <%= couch.capacidad %>	</p>
-						<p> Dueño: <%= User.find(couch.user_id).nombre %> </p>
+						<p>	Ciudad: <%= couch.ciudad %>	</p>
+						<p>	Calificacion: <%= (couch.punt * 1.0)/couch.cant  %> / 10</p>
+						<p>	---------------------------------	</p>
+						<p> Dueño: <%= User.find(couch.user_id).nombre %></p>                            
+				<p>		Reputacion: <%= (User.find(couch.user_id).punt * 1.0)/User.find(couch.user_id).cant  %> / 10</p>
+						<% if user_signed_in? %>						
+							<% if current_user.id==couch.user_id %>
+								<div class="actions col-md-2 col-sm-3">
+									<%= link_to "Editar  ",edit_couch_path(couch.id),class:'btn btn-default' %>
+						
+									<%= link_to 'Eliminar', couch_path(couch),method: :delete, data: { confirm: '¿Está seguro?' }, class:'btn btn-danger' %>
+								</div>
+					 		<% else %>		
+								<%= link_to "reservar",edit_reserva_path(couch),class:'btn btn-default' %>
+							<% end %>
+						<% end %>
 					</div>
 				<% end %>
 			</div>

@@ -9,7 +9,7 @@
 			<%= link_to "Cerrar Sesión", destroy_user_session_path, method:'delete' , class:'btn btn-default' %>
 			<%= link_to "Editar Cuenta", edit_user_registration_path , class:'btn btn-default' %>
 			<p class="col-offset">Hola <%= current_user.nombre %></p>
-			<p class="col-offset">Reputacion: <%= (User.find(current_user.id).punt * 1.0)/User.find(current_user.id).cant  %> / 10</p>
+			<p class="col-offset">Reputacion: <%= User.find(current_user.id).punt * 1.0)/User.find(current_user.id).cant  %> / 10</p>
 
 		<% else %>
 			<%= link_to "Iniciar Sesión", new_user_session_path , class:'btn btn-default' %>

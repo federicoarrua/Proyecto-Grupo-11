@@ -23,6 +23,8 @@ admin.apellido="Admin"
 admin.fecha=Date.new(1990,1,1)
 admin.admin=true
 admin.cuenta=nil
+admin.punt=5
+admin.cant=1
 admin.save
 
 user=User.new
@@ -33,6 +35,8 @@ user.nombre="Ejemplo"
 user.apellido="Apellido"
 user.fecha=Date.new(1990,1,1)
 user.cuenta="Base"
+user.punt=5
+user.cant=1
 user.save
 
 couch=Couch.create
@@ -42,6 +46,8 @@ couch.capacidad = 4
 couch.ciudad = "Ushuaia"
 couch.user_id = 1
 couch.tipo_id = 1
+couch.punt=5
+couch.cant=1
 couch.save
 
 couch=Couch.create
@@ -51,6 +57,8 @@ couch.capacidad = 10
 couch.ciudad = "Bariloche"
 couch.user_id = 2
 couch.tipo_id = 2
+couch.punt=5
+couch.cant=1
 couch.save
 
 couch=Couch.create
@@ -60,4 +68,6 @@ couch.capacidad = 5
 couch.ciudad = "Neuquen"
 couch.user_id = 2
 couch.tipo_id = 1
+couch.punt=5
+couch.cant=1
 couch.save

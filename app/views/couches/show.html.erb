@@ -9,8 +9,21 @@
 				<p>	Descripción <%= @couch.descripcion %> </p>
 				<p>	Capacidad: <%= @couch.capacidad %>	</p>
 				<p>	Ciudad: <%= @couch.ciudad %>	</p>
-				<p> Dueño: <%= User.find(@couch.user_id).nombre %> </p>
-			<% if current_user.id==@couch.user_id %>
+
+
+				<p>	Calificacion: <%= (@couch.punt * 1.0)/@couch.cant  %> / 10</p>
+				<p>	______________________________________	</p>
+						<p> Dueño: <%= User.find(@couch.user_id).nombre %></p>                            
+				<p>		Reputacion: <%= (User.find(@couch.user_id).punt * 1.0)/User.find(@couch.user_id).cant  %> / 10</p>
+
+
+
+
+
+
+
+
+			<% if  current_user!=nil and current_user.id==@couch.user_id  %>
 				 <div class="actions col-md-2 col-sm-3">
 						<%= link_to "Editar  ",edit_couch_path(@couch.id),class:'btn btn-default' %>
 						

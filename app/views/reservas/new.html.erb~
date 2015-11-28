@@ -1,25 +1,74 @@
 
+<div class="col-md-8 col-sm-6">
+	<table class="table table-striped">
+	  <thead>
+		  <tr>
+			<th>Couch</th>
+	
+			<th>Ingreso</th>
+	
+			<th>Salida</th>
 
 
+			<th>Puntaje Couch</th>
 
-<%= form_for :reserva, url: reservas_path do |f| %>
+			<th>Puntaje Dueño</th>
+			
+	
+		   
+		  </tr>
+	  </thead>
+	  
+	  <tbody>
+	<% @reservas.each do |reserva| %>
+	  <tr>
+	<% if reserva.estado=="Asistio" or reserva.estado=="AsistioE" %>
+		<% if current_user.id==reserva.nombre_id %>
+
+		<td><%= link_to 'Ver Couch', couch_path(reserva.couch_id),class:'btn btn-default' %>
+		
+		<td><%= reserva.ingreso %></td>
+		<td><%= reserva.salida %></td>	
+
+	<% if Cpuntaje.find_by_couch(reserva.couch_id)!=nil  %>
+
+           <% if  Cpuntaje.find_by_origen(current_user.id)==nil  %>
+	
+	<td><%= link_to 'Puntaje', edit_cpuntaje_path(reserva.couch_id),class:'btn btn-default' %>
+		
+		<%else%>	
+			<td><%=  Cpuntaje.find_by_origen(current_user.id).puntaje  %></td>
+	<% end %>
+	<%else%>
+	<td><%= link_to 'Puntaje', edit_cpuntaje_path(reserva.couch_id),class:'btn btn-default' %>
+	
 
 
-  <p>
-    <%= f.label :Ingreso %><br>
-    <%= f.date_select :ingreso, :order => [:day, :month, :year], :start_year=>2015 %>
-  </p>
- 
-  <p>
-    <%= f.label :Salida %><br>
-    <%= f.date_select :salida, :order => [:day, :month, :year], :start_year=>2015 %>
-  </p>
- 	
-	params[:id]=>couch_id 
+<% end %>
+<% if Upuntaje.find_by_destino(Couch.find(reserva.couch_id).user_id)!=nil  %>
 
-  <p>
-    <%= f.submit %>
-  </p>
+           <% if  Upuntaje.find_by_origen(current_user.id)==nil  %>
+	
+	<td><%= link_to 'PuntajeU', edit_upuntaje_path(Couch.find(reserva.couch_id).user_id),class:'btn btn-default' %>
+		
+		<%else%>	
+			<td><%=  Upuntaje.find_by_origen(current_user.id).puntaje  %></td>
+	<% end %>
+	<%else%>
+	<td><%= link_to 'PuntajeU', edit_upuntaje_path(Couch.find(reserva.couch_id).user_id),class:'btn btn-default' %>
+	
+
+
 <% end %>
 
 
+		
+	
+			
+	<% end %>
+	  </tr>
+	<% end %>
+	<% end %>
+	  </tbody>
+	</table>
+</div>

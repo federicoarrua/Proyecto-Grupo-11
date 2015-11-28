@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origen: 1
+  destino: 1
+  puntaje: 1
+
+two:
+  origen: 1
+  destino: 1
+  puntaje: 1

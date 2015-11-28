@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127002126) do
+ActiveRecord::Schema.define(version: 20151127222049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,9 +28,19 @@ ActiveRecord::Schema.define(version: 20151127002126) do
     t.string   "foto_content_type"
     t.integer  "foto_file_size"
     t.datetime "foto_updated_at"
+    t.integer  "punt"
+    t.integer  "cant"
   end
 
   add_index "couches", ["tipo_id"], name: "index_couches_on_tipo_id", using: :btree
+
+  create_table "cpuntajes", force: :cascade do |t|
+    t.integer  "origen"
+    t.integer  "couch"
+    t.integer  "puntaje"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "reservas", force: :cascade do |t|
     t.integer  "nombre_id"
@@ -47,6 +57,14 @@ ActiveRecord::Schema.define(version: 20151127002126) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "borrado",    default: false
+  end
+
+  create_table "upuntajes", force: :cascade do |t|
+    t.integer  "origen"
+    t.integer  "destino"
+    t.integer  "puntaje"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,6 +86,8 @@ ActiveRecord::Schema.define(version: 20151127002126) do
     t.date     "fecha"
     t.boolean  "admin",                  default: false
     t.string   "cuenta"
+    t.integer  "punt"
+    t.integer  "cant"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

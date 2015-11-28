@@ -1,0 +1,2 @@
+module UpuntajesHelper
+end
