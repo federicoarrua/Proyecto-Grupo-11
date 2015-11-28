@@ -45,12 +45,12 @@
 
            <% if  Upuntaje.find_by_origen(current_user.id)==nil  %>
 	
-	<td><%= link_to 'PuntajeU', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
+	<td><%= link_to 'Calificar', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
 		
 		
 	<% end %>
 	<%else%>
-	<td><%= link_to 'PuntajeU', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
+	<td><%= link_to 'Calificar', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
 <% end %>
 		<% end %>
 		<% end %>
@@ -70,8 +70,8 @@
 	  <thead>
 		  <tr>
 			<th>Reserva</th>
-			<th>Usuario</th>
-	
+			<th>Dueño</th>
+			<th>Reputacion</th>
 			<th>Ingreso</th>
 	
 			<th>Salida</th>
@@ -88,7 +88,8 @@
 		<% if current_user.id==reserva.nombre_id %>
 
 		<td><%= link_to 'Ver Couch', couch_path(reserva.couch_id),class:'btn btn-default' %>
-		<td><%= User.find(reserva.nombre_id).nombre %></td>
+		<td><%= User.find(Couch.find(reserva.couch_id).user_id).nombre %></td>
+		<td><%= (User.find(Couch.find(reserva.couch_id).user_id).punt * 1.0)/User.find(Couch.find(reserva.couch_id).user_id).cant  %> / 10</td>
 		<td><%= reserva.ingreso %></td>
 		<td><%= reserva.salida %></td>	
 		<td><%= reserva.estado %></td>

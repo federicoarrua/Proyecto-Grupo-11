@@ -34,13 +34,13 @@
 
            <% if  Cpuntaje.find_by_origen(current_user.id)==nil  %>
 	
-	<td><%= link_to 'Puntaje', edit_cpuntaje_path(reserva.couch_id),class:'btn btn-default' %>
+	<td><%= link_to 'Calificar', edit_cpuntaje_path(reserva.couch_id),class:'btn btn-default' %>
 		
 		<%else%>	
 			<td><%=  Cpuntaje.find_by_couch(reserva.couch_id).puntaje  %></td>
 	<% end %>
 	<%else%>
-	<td><%= link_to 'Puntaje', edit_cpuntaje_path(reserva.couch_id),class:'btn btn-default' %>
+	<td><%= link_to 'Calificar', edit_cpuntaje_path(reserva.couch_id),class:'btn btn-default' %>
 	
 
 
@@ -49,13 +49,13 @@
 
            <% if  Upuntaje.find_by_origen(current_user.id)==nil  %>
 	
-	<td><%= link_to 'PuntajeU', edit_upuntaje_path(Couch.find(reserva.couch_id).user_id),class:'btn btn-default' %>
+	<td><%= link_to 'Calificar', edit_upuntaje_path(Couch.find(reserva.couch_id).user_id),class:'btn btn-default' %>
 		
 		<%else%>	
 			<td><%=  Upuntaje.find_by_origen(current_user.id).puntaje  %></td>
 	<% end %>
 	<%else%>
-	<td><%= link_to 'PuntajeU', edit_upuntaje_path(Couch.find(reserva.couch_id).user_id),class:'btn btn-default' %>
+	<td><%= link_to 'Calificar', edit_upuntaje_path(Couch.find(reserva.couch_id).user_id),class:'btn btn-default' %>
 	
 
 
