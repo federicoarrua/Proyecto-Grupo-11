@@ -41,6 +41,17 @@
 		
 			<%else%>
 			<td><%= link_to 'Eliminar', eliminar_reserva_path(reserva.id),class:'btn btn-default'%></td>	
+		<% if Upuntaje.find_by_destino(reserva.nombre_id)!=nil  %>
+
+           <% if  Upuntaje.find_by_origen(current_user.id)==nil  %>
+	
+	<td><%= link_to 'PuntajeU', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
+		
+		
+	<% end %>
+	<%else%>
+	<td><%= link_to 'PuntajeU', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
+<% end %>
 		<% end %>
 		<% end %>
 	<% end %>
