@@ -2,6 +2,8 @@ class Couch < ActiveRecord::Base
 	belongs_to :tipo
 	belongs_to :user
 	
+	has_many :reservas , dependent: :destroy	
+		
 	scope :ciudades, -> { order("ciudad") }
 	scope :capacidades, -> {order("capacidad") }
 	
