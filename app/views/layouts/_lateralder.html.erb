@@ -1,0 +1,9 @@
+<div class="col-md-2 col-xs-3 list-group">
+	<% if current_user %>
+		<%= link_to "Couches asistidos", new_reserva_path,class:'list-group-item' %>
+		<%= link_to "Calificaciones", upuntajes_path,class:'list-group-item' %>
+		<%= link_to "Ver reservas", reservas_path,class:'list-group-item' %>
+	<% end %>
+	
+	<%= link_to "Acerca de","#",class:'list-group-item' %>
+</div>

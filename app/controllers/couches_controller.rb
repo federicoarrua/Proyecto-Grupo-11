@@ -5,9 +5,9 @@ class CouchesController < ApplicationController
 
 def vista
 	if params[:id]=="1"
-		@couches = Couch.ciudades.paginate(page: params[:page], per_page: 1)
+		@couches = Couch.ciudades.paginate(page: params[:page], per_page: 2)
 	else
-		@couches = Couch.capacidades.paginate(page: params[:page], per_page: 1)
+		@couches = Couch.capacidades.paginate(page: params[:page], per_page: 2)
 
 	end
 

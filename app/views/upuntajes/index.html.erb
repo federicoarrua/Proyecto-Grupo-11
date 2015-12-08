@@ -1,68 +1,69 @@
 <div class="col-md-8 col-sm-6">
-	<h1> Recibidas </h1>
-	<table class="table table-striped">
-	  <thead>
+		<div>
+		<h1> Recibidas </h1>
+		<table class="table table-striped">
+		  <thead>
+			  <tr>
+			
+				<th>Usuario</th>
+	
+			
+				<th>Calificacion</th>
+	
+			   
+			  </tr>
+		  </thead>
+		  
+		  <tbody>
+		<% @puntajes.each do |puntaje| %>
 		  <tr>
+		
+			<% if current_user.id==puntaje.destino %>
+				<td><%= User.find(puntaje.origen).nombre %></td>
+		          		<td><%= puntaje.puntaje %></td>
+		
 			
-			<th>Usuario</th>
-	
-			
-			<th>Calificacion</th>
-	
-		   
+		
+		<% end %>
 		  </tr>
-	  </thead>
-	  
-	  <tbody>
-	<% @puntajes.each do |puntaje| %>
-	  <tr>
-		
-		<% if current_user.id==puntaje.destino %>
-			<td><%= User.find(puntaje.origen).nombre %></td>
-              		<td><%= puntaje.puntaje %></td>
-		
-			
-		
-	<% end %>
-	  </tr>
 	
-<% end %>
+	<% end %>
 
-	  </tbody>
-	</table>
-</div>
-
-<div class="col-md-8 col-sm-6">
-	<h1> Enviadas </h1>
-	<table class="table table-striped">
-	  <thead>
+		  </tbody>
+		</table>
+	</div>
+	<div>
+		<h1> Enviadas </h1>
+		<table class="table table-striped">
+		  <thead>
+			  <tr>
+			
+				<th>Usuario</th>
+	
+			
+				<th>Calificacion</th>
+	
+			   
+			  </tr>
+		  </thead>
+		  
+		  <tbody>
+		<% @puntajes.each do |puntaje| %>
 		  <tr>
+		
+			<% if current_user.id==puntaje.origen %>
+				<td><%= User.find(puntaje.destino).nombre %></td>
+		          		<td><%= puntaje.puntaje %></td>
+		
 			
-			<th>Usuario</th>
-	
-			
-			<th>Calificacion</th>
-	
-		   
+		
+		<% end %>
 		  </tr>
-	  </thead>
-	  
-	  <tbody>
-	<% @puntajes.each do |puntaje| %>
-	  <tr>
-		
-		<% if current_user.id==puntaje.origen %>
-			<td><%= User.find(puntaje.destino).nombre %></td>
-              		<td><%= puntaje.puntaje %></td>
-		
-			
-		
-	<% end %>
-	  </tr>
 	
-<% end %>
+	<% end %>
 
-	  </tbody>
-	</table>
+		  </tbody>
+		</table>
+	</div>
+
 </div>
-
