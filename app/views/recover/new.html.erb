@@ -1,0 +1,22 @@
+<div class="col-md-6 col-sm-8 ">
+	<h3>Olvidaste tu contraseña?</h3>
+
+	<%= form_for :email,url: url_for( :controller => :recover, :action => :create ) do |f| %>
+			
+		<% if flash[:recover] %>
+			<div class="alert alert-warning">
+				<li><h6><%= flash[:recover] %></h6></li>
+			</div>
+		<% end %>
+
+	  <div class="form-group">
+		<%= f.label :email %><br />
+		<%= f.email_field :email, autofocus: true, class:'form-control input-large' %>
+	  </div>
+
+	  <div class="actions">
+		<%= f.submit "Enviar instrucciones", class:'btn btn-default' %>
+	  </div>
+	<% end %>
+	
+</div>

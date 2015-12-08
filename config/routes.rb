@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :cpuntajes
   resources :upuntajes
   resources :tipos
+  resources :recover
   #resources :reservas
    resources :couches do
 	member do
