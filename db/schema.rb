@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127222049) do
+ActiveRecord::Schema.define(version: 20151209140902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text     "contenido"
+    t.integer  "pregunta_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "couches", force: :cascade do |t|
     t.integer  "capacidad"
@@ -40,6 +48,15 @@ ActiveRecord::Schema.define(version: 20151127222049) do
     t.integer  "puntaje"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "contenido"
+    t.boolean  "check",      default: false
+    t.integer  "couch_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "reservas", force: :cascade do |t|

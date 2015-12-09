@@ -1,0 +1,15 @@
+<div class="col-md-8 col-sm-8">
+	<%= @question.couch_id %>
+	<%= form_for @question do |f| %>
+
+		<%= f.hidden_field :couch_id, autofocus: true%>
+		
+		<div class="form-group">
+			<%= f.label :contenido %><br />
+			<%= f.text_field :contenido, autofocus: true,class:'form-control input-medium', rows:3 %>
+		</div>
+
+		<%= f.submit "Aceptar", class:'btn btn-default' %>				
+	<% end %>
+
+</div>

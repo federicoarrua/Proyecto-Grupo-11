@@ -10,15 +10,13 @@ def vista
 		@couches = Couch.capacidades.paginate(page: params[:page], per_page: 2)
 
 	end
-
 end
 
 
-  def index
-	
-	@couches = Couch.where(user_id: current_user.id).paginate(page: params[:page], per_page: 1)
-	
-  end
+def index
+	@couches = Couch.where(user_id: current_user.id).paginate(page: params[:page], per_page: 1)	
+end
+
 def new
 	@couch = Couch.new
 end
@@ -83,9 +81,9 @@ end
 		@couch = Couch.find(params[:id])
 	end
 	
-def couch_params
-    params.require(:couch).permit(:descripcion, :capacidad, :tipo_id, :ciudad, :foto)
-  end
+	def couch_params
+    	params.require(:couch).permit(:descripcion, :capacidad, :tipo_id, :ciudad, :foto)
+    end
 	
 	def verify_user	
 		(current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless user_signed_in?)

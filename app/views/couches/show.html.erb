@@ -30,9 +30,54 @@
 						<%= link_to 'Eliminar', couch_path(@couch),method: :delete, data: { confirm: '¿Está seguro?' }, class:'btn btn-danger' %>
 				</div>
 	 		<% else %>		
-				<%= link_to "reservar",edit_reserva_path(@couch),class:'btn btn-default' %>
+				<%= link_to "Reservar",edit_reserva_path(@couch),class:'btn btn-default' %>
 			<% end %>
 		</div>
 		<% end %>
 	</div>
+	<% if flash[:question] %><div class="alert alert-warning"> <%= flash[:question] %> </div><% end %>
+	<%= form_for :question, :url => { :controller => "questions", :action => "create"} do |f| %>
+
+		<%= f.hidden_field :couch_id, :value=>@couch.id%>
+		
+		<div class="form-group">
+			<%= f.label "Haz una pregunta" %><br />
+			<%= f.text_field :contenido, autofocus: true,class:'form-control input-large', rows:3 %>
+		</div>
+
+		<%= f.submit "Aceptar", class:'btn btn-default' %>				
+	<% end %>
+	
+	<br></br>
+	
+	<% Question.all.each do |q| %>
+		<% if q.couch_id == @couch.id %>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<p> <%= q.contenido %> <p>		
+				</div>
+				<div class="panel-body">			
+					<% if (q.check == false && current_user.id == @couch.user_id) %>
+							<% if flash[:answer] %><div class="alert alert-warning"> <=% flash[:answer] %> </div><% end %>
+							<%= form_for :answer, :url => { :controller => "answers", :action => "create"} do |f| %>
+
+								<%= f.hidden_field :pregunta_id, :value=>q.id%>
+		
+								<div class="form-group">
+									<%= f.label "Responde" %><br />
+									<%= f.text_field :contenido, autofocus: true,class:'form-control input-large', rows:3 %>
+								</div>
+
+								<%= f.submit "Aceptar", class:'btn btn-default' %>				
+							<% end %>
+					<% else %>
+						<% if Answer.find_by_pregunta_id(q.id) %>
+							<%= Answer.find_by_pregunta_id(q.id).contenido %>
+						<% end %>					
+					<% end %>				
+				</div>
+			</div>
+		<% end %>		
+	<% end %>
+
 </div>

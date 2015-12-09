@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :upuntajes
   resources :tipos
   resources :recover
+  resources :questions
+  resources :answers
   #resources :reservas
    resources :couches do
 	member do
