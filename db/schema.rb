@@ -102,18 +102,13 @@ ActiveRecord::Schema.define(version: 20151209140902) do
     t.string   "pais"
     t.date     "fecha"
     t.boolean  "admin",                  default: false
-    t.string   "cuenta"
+    t.boolean  "premium",                default: false
+    t.date     "fechaPremium"
     t.integer  "punt"
     t.integer  "cant"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "vista", force: :cascade do |t|
-    t.string   "orden"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end

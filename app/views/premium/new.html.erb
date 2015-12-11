@@ -1,0 +1,20 @@
+<div class="col-md-8 col-sm-8">
+	
+	<h3>Hazte Premium! </h3>
+	
+	<p> El servicio premium cobrará de su tarjeta de crédito $9.99 por única vez. <p>
+	
+	<%= form_for :premium,url: url_for( :controller => :premium, :action => :create ) do |f|%>
+		
+		<%= f.label "Empresa de su tarjeta" %>
+		<%= f.select :score, [['American Express', 1], ['MasterCard', 2], ['Visa', 3]] %>
+		
+		<div class="form-group">
+			<%= f.label "Numero de tarjeta" %><br />
+			<%= f.text_field :num, autofocus: true, required:true,class:'form-control input-medium', minlength:10 %>
+		</div>
+		<div class="actions">
+			<%= f.submit "Hacerte Premium", class:'btn btn-default' %>
+		</div>		
+	<% end %>
+</div>

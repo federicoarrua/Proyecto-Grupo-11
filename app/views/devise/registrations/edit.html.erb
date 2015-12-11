@@ -58,12 +58,6 @@
 		<%= f.password_field :current_password, autocomplete: "off", class:'form-control input-medium' %>
 	  </div>
 
-	  <div class="form-group">
-		<%= f.label :"Tipo de Cuenta " %>
-		<%= f.select :cuenta, options_for_select(["Base", "Premium"]) %>
-	
-	  </div>
-
 	  <div class="actions col-md-2 col-sm-2">
 		<%= f.submit "Update", class:'btn btn-primary' %>
 	  </div>

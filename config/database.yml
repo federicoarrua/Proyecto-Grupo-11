@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: couchinn_production
-  username: couchinn
+  username: couch
   password: <%= ENV['COUCHINN_DATABASE_PASSWORD'] %>

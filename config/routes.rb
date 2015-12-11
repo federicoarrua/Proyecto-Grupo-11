@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :recover
   resources :questions
   resources :answers
+  resources :premium
   #resources :reservas
    resources :couches do
 	member do
