@@ -23,30 +23,34 @@
 
 
 
-			<% if  current_user!=nil and current_user.id==@couch.user_id  %>
+			<% if  user_signed_in? and current_user.id==@couch.user_id  %>
 				 <div class="actions col-md-2 col-sm-3">
 						<%= link_to "Editar  ",edit_couch_path(@couch.id),class:'btn btn-default' %>
 						
 						<%= link_to 'Eliminar', couch_path(@couch),method: :delete, data: { confirm: '¿Está seguro?' }, class:'btn btn-danger' %>
 				</div>
-	 		<% else %>		
-				<%= link_to "Reservar",edit_reserva_path(@couch),class:'btn btn-default' %>
+	 		<% else %>
+				<% if user_signed_in? %>		
+					<%= link_to "Reservar",edit_reserva_path(@couch),class:'btn btn-default' %>
+				<% end %>			
 			<% end %>
 		</div>
 		<% end %>
 	</div>
 	<% if user_signed_in? %>
-		<% if flash[:question] %><div class="alert alert-warning"> <%= flash[:question] %> </div><% end %>
-		<%= form_for :question, :url => { :controller => "questions", :action => "create"} do |f| %>
+		<% if current_user.id != @couch.user_id %>
+			<% if flash[:question] %><div class="alert alert-warning"> <%= flash[:question] %> </div><% end %>
+			<%= form_for :question, :url => { :controller => "questions", :action => "create"} do |f| %>
 
-			<%= f.hidden_field :couch_id, :value=>@couch.id%>
+				<%= f.hidden_field :couch_id, :value=>@couch.id%>
 		
-			<div class="form-group">
-				<%= f.label "Haz una pregunta" %><br />
-				<%= f.text_field :contenido, autofocus: true,class:'form-control input-large', rows:3 %>
-			</div>
+				<div class="form-group">
+					<%= f.label "Haz una pregunta" %><br />
+					<%= f.text_field :contenido, autofocus: true,class:'form-control input-large', rows:3 %>
+				</div>
 
-			<%= f.submit "Aceptar", class:'btn btn-default' %>				
+				<%= f.submit "Aceptar", class:'btn btn-default' %>				
+			<% end %>
 		<% end %>
 	<% end %>
 	<br></br>
