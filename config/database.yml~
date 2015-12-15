@@ -21,10 +21,10 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   host: localhost
-  username: maurodb
-  password: mauro
+  username: couch
+  password: couch
 
-#development:
+development:
   <<: *default
   database: couchinn_development
 
@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: couchinn_production
-  username: couchinn
+  username: couch
   password: <%= ENV['COUCHINN_DATABASE_PASSWORD'] %>

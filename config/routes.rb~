@@ -8,12 +8,20 @@ Rails.application.routes.draw do
 		passwords: 'passwords'
 	}
   resources :cpuntajes
+  resources :upuntajes
   resources :tipos
+  resources :recover
+  resources :questions
+  resources :answers
+  resources :premium
   #resources :reservas
    resources :couches do
 	member do
 		get "vista"
+		
 	end
+	
+		
 	end 
 
   resources :reservas do

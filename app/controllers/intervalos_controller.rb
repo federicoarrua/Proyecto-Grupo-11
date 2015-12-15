@@ -1,0 +1,52 @@
+class IntervalosController < ApplicationController
+
+
+
+
+def edit
+	flash[:id] = params[:id]
+	 @int = Intervalo.new
+	 
+end
+
+def create
+  @int = Intervalo.new(reserva_params)
+  @int.uso= flash[:id]
+  @us=User.all
+  @cant=-1
+  @pre=0
+	
+
+		if @int.save
+			@us.each do |usuario| 
+ 			 if usuario.created_at <= @int.fin and usuario.created_at >= @int.inicio
+				@cant=@cant+1
+					if usuario.premium and not(usuario.admin)
+						@pre=@pre+1
+						end
+				 end 
+			end
+
+			@int.destroy
+		else
+
+		        flash[:id] = @int.uso
+			render :edit 
+			
+		end
+
+	
+	 
+		
+  
+
+ 
+  
+end
+
+def reserva_params
+    params.require(:int).permit(:inicio, :fin)
+  end
+
+
+end

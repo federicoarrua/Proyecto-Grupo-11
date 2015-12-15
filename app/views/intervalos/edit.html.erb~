@@ -1,0 +1,33 @@
+<div class="col-md-8 col-sm-8">
+
+	<h1> Reserva </h1>
+
+	<%= form_for :int, url: intervalos_path do |f| %>
+	
+				<% if @int.errors.any? %>
+					<div class="alert alert-danger">
+					  <h6>Problemas en el registro:</h6>
+					  <ul>
+					  
+						<li><h6>La segunda fecha no puede ser igual o menor que la primera</h6></li>
+					  
+					  </ul>
+					</div>
+				<% end %>
+
+	
+		<%= f.label :"Inicio del intervalo" %><br>
+		<%= f.date_select :inicio, :order => [:day, :month, :year], :start_year=>Date.today.year %>
+	
+		<br></br>
+
+		<%= f.label :"Fin del intervalo" %><br>
+		<%= f.date_select :fin, :order => [:day, :month, :year], :start_year=>Date.today.year, class:'selectpicker'%>
+
+		<br></br>
+
+		<%= f.submit "Aceptar", class:'btn btn-primary' %>
+
+	<% end %>
+
+</div>

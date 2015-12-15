@@ -34,6 +34,7 @@ user.email="ejemplo@couchinn.com"
 user.nombre="Ejemplo"
 user.apellido="Apellido"
 user.fecha=Date.new(1990,1,1)
+user.premium=false
 user.punt=5
 user.cant=1
 user.save

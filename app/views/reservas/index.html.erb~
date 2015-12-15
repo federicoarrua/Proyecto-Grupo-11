@@ -45,12 +45,12 @@
 
            <% if  Upuntaje.find_by_origen(current_user.id)==nil  %>
 	
-	<td><%= link_to 'PuntajeU', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
+	<td><%= link_to 'Calificar', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
 		
 		
 	<% end %>
 	<%else%>
-	<td><%= link_to 'PuntajeU', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
+	<td><%= link_to 'Calificar', edit_upuntaje_path(reserva.nombre_id),class:'btn btn-default' %>
 <% end %>
 		<% end %>
 		<% end %>
@@ -61,10 +61,7 @@
 
 	  </tbody>
 	</table>
-</div>
 
-
-<div class="col-md-8 col-sm-6">
 <h1> Mis Reservas </h1>
 	<table class="table table-striped">
 	  <thead>

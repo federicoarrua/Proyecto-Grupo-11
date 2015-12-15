@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inicio: 2015-12-11
+  fin: 2015-12-11
+  uso: 1
+
+two:
+  inicio: 2015-12-11
+  fin: 2015-12-11
+  uso: 1

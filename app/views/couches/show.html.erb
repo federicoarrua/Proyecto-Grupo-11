@@ -63,7 +63,7 @@
 				</div>
 				<div class="panel-body">			
 					<% if (q.check == false && current_user.id == @couch.user_id) %>
-							<% if flash[:answer] %><div class="alert alert-warning"> <=% flash[:answer] %> </div><% end %>
+							<% if flash[:answer] %><div class="alert alert-warning"> <%= flash[:answer] %> </div><% end %>
 							<%= form_for :answer, :url => { :controller => "answers", :action => "create"} do |f| %>
 
 								<%= f.hidden_field :pregunta_id, :value=>q.id%>

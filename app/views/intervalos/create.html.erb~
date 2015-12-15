@@ -1,0 +1,58 @@
+<td><% if @int.uso==1 %></td>
+<div class="col-md-8 col-sm-6">
+<h1> Registros </h1>
+	<table class="table table-striped">
+	  <thead>
+		  <tr>
+			<th>Desde</th>
+			<th>Hasta</th>
+			<th>Total Registrados</th>
+			
+	
+		   
+		  </tr>
+	  </thead>
+
+<tbody>
+	
+		<td><%= @int.inicio %></td>
+		<td><%= @int.fin %></td>
+		<td><% if @cant>=0 %></td>
+			<td><%= @cant %></td>
+		<td><% else %></td>
+			<td> 0 </td>
+			<td><% end %></td>
+ </tbody>
+	</table>
+
+
+ </div>
+<% else%>
+
+<div class="col-md-8 col-sm-6">
+<h1> Ganancias </h1>
+	<table class="table table-striped">
+	  <thead>
+		  <tr>
+			<th>Desde</th>
+			<th>Hasta</th>
+			<th>Total </th>
+			
+	
+		   
+		  </tr>
+	  </thead>
+
+<tbody>
+	
+		<td><%= @int.inicio %></td>
+		<td><%= @int.fin %></td>	
+		<td>$ <%= @pre * 9.99 %></td>
+
+ </tbody>
+	</table>
+
+
+ </div>
+<%end%>
+

@@ -1,18 +1,25 @@
-<div class="col-md-2 col-xs-2 list-group">
+<div class="col-md-2 col-xs-3 list-group">
 	<%= link_to "Ordenar por ciudad",vista_couch_path(1),class:'list-group-item' %> 
 	<%= link_to "Ordenar por capacidad",vista_couch_path(2),class:'list-group-item' %> 
-        <%= link_to "Acerca de","#",class:'list-group-item' %>
 
 	<% if current_user.try(:admin?) %>
 		<%= link_to "Modificar tipos de Couchs",tipos_path,class:'list-group-item' %>
+		<%= link_to "Ver registros de Usuarios",edit_intervalo_path(1),class:'list-group-item' %>
+		<%= link_to "Ver ganancias",ganancias_couches_path,class:'list-group-item' %>
 	<% end %>
 	<% if current_user %>
 	<%= link_to "Ver lista de Couchs",root_path,class:'list-group-item' %>
 	 <%= link_to "Ver mis Couchs", couches_path,class:'list-group-item' %>
 	<%= link_to "Agregar un couch", new_couch_path,class:'list-group-item' %>
-	<%= link_to "Ver reservas", reservas_path,class:'list-group-item' %>
 	<%= link_to "Couches asistidos", new_reserva_path,class:'list-group-item' %>
-	<%= link_to "Calificaciones", upuntajes_path,class:'list-group-item' %>
+		<%= link_to "Calificaciones", upuntajes_path,class:'list-group-item' %>
+		<%= link_to "Ver reservas", reservas_path,class:'list-group-item' %>
+		<% if !current_user.premium %>
+			<%= link_to "Hazte Premium", new_premium_path,class:'list-group-item list-group-item-success' %>
+		<% end %>
 	
+	
+	<%= link_to "Acerca de","#",class:'list-group-item' %>
+
 	<% end %>
 </div>

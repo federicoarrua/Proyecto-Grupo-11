@@ -14,11 +14,16 @@ Rails.application.routes.draw do
   resources :questions
   resources :answers
   resources :premium
+  resources :intervalos
+
   #resources :reservas
    resources :couches do
 	member do
 		get "vista"
+		
 	end
+	
+		
 	end 
 
   resources :reservas do
