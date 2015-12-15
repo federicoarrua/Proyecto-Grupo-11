@@ -15,7 +15,8 @@ class Couch < ActiveRecord::Base
 	
 	validates :ciudad,
 		presence: true,
-		length: {minimum: 2 ,maximum:20}
+		length: {minimum: 2 ,maximum:20},
+		case_sensitive: false
 	
 	validates :capacidad,
 		presence: true
@@ -29,6 +30,19 @@ class Couch < ActiveRecord::Base
 	validates_attachment_presence :foto
 	validates_attachment_content_type :foto, :content_type => ['image/jpeg', 'image/png']
 	validates_attachment_content_type :foto, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+
+	def self.searchCiudad(query)
+	    where("LOWER(ciudad) = ?", "#{query.downcase}") 
+	end
+
+	def self.searchCapacidad(query)
+	    where("capacidad = ?", "#{query}") 
+	end
+
+	def self.searchTipo(query)
+	    where("tipo_id = ?", "#{query}") 
+	end
+
 end
 
 

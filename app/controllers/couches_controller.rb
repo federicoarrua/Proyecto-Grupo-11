@@ -4,17 +4,23 @@ class CouchesController < ApplicationController
  # before_filter :verify_user
 
 def vista
-	if params[:id]=="1"
-		@couches = Couch.ciudades.paginate(page: params[:page], per_page: 2)
-	else
-		@couches = Couch.capacidades.paginate(page: params[:page], per_page: 2)
-
-	end
+	@couches = Couch.where(user_id: current_user.id).paginate(page: params[:page], per_page: 2)
 end
 
 
 def index
-	@couches = Couch.where(user_id: current_user.id).paginate(page: params[:page], per_page: 1)	
+	@couches = Couch.all.paginate(page: params[:page], per_page: 2)
+    if params[:search]
+		if params[:search][:ciudad] != ''
+      		@couches = @couches.searchCiudad(params[:search][:ciudad]).order("created_at DESC")
+		end	
+		if params[:search][:capacidad] != ''
+      		@couches = @couches.searchCapacidad(params[:search][:capacidad]).order("created_at DESC")
+		end
+		if params[:search][:tipo] != ''
+      		@couches = @couches.searchTipo(params[:search][:tipo]).order("created_at DESC")
+		end		
+	end
 end
 
 def new

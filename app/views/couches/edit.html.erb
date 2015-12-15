@@ -27,7 +27,7 @@
 				<%= f.text_field :capacidad, autofocus: true, class:'form-control input-medium' %>
 		 
 				<%= f.label :Tipo %><br>
-		 		<%= f.collection_select :tipo_id, Tipo.all, :id, :tipo%>
+		 		<%= f.collection_select :tipo_id, Tipo.activos, :id, :tipo%>
 				<br></br>
 				<%= f.label :ciudad %>
 				<%= f.text_field :ciudad , autofocus: true, class:'form-control input-medium'%>

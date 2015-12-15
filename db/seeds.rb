@@ -71,3 +71,14 @@ couch.tipo_id = 1
 couch.punt=5
 couch.cant=1
 couch.save
+
+couch=Couch.create
+couch.descripcion = "Hermosa casa con ubicacion excelente y gran vista"
+couch.foto = File.open('app/assets/images/casa.jpg')
+couch.capacidad = 2
+couch.ciudad = "Ushuaia"
+couch.user_id = 1
+couch.tipo_id = 2
+couch.punt=5
+couch.cant=1
+couch.save
